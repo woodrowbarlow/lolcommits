@@ -1,0 +1,56 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+h2 {
+  color: #666;
+}
+p a {
+  /*font-weight: bold;*/
+}
+
+.brand {
+  color: white !important;
+}
+.hero-unit {
+  background-color: #fff;
+  padding: 30px;
+}
+.hero-unit h1 {
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+.hero-unit p {
+  line-height: 26px;
+  margin-right: 10px;
+}
+.logo {
+  width: 200px;
+  margin-right: 25px;
+  float: left;
+}
+pre {
+  font-size: 12px;
+}
+.alert a {
+  color: lightslategrey;
+}
+
+.social-buttons-row {
+  padding: 15px 0;
+  text-align: center;
+  background-color: whiteSmoke;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #DDD;
+}
+.social-buttons {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
