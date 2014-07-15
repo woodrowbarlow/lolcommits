@@ -7,10 +7,10 @@ module Lolcommits
       FileUtils.mkdir_p(frames_location)
 
       # capture the raw video with ffmpeg video4linux2
-      system_call "#{capture_delay_string}ffmpeg -v quiet -y -f video4linux2 -video_size 320x240 -i #{capture_device_string} -t #{animated_duration} #{video_location} > /dev/null"
+      system_call "ffmpeg -v quiet -y -f video4linux2 -video_size 320x240 -i #{capture_device_string} -t #{capture_duration} #{video_location} > /dev/null"
       if File.exists?(video_location)
         # convert raw video to png frames with ffmpeg
-        system_call "ffmpeg -v quiet -i #{video_location} -t #{animated_duration} #{frames_location}/%09d.png > /dev/null"
+        system_call "ffmpeg #{capture_delay_string} -v quiet -i #{video_location} -t #{animated_duration} #{frames_location}/%09d.png > /dev/null"
 
         # use fps to set delay and number of frames to skip (for lower filesized gifs)
         fps   = video_fps(video_location)
@@ -61,7 +61,11 @@ module Lolcommits
     end
 
     def capture_delay_string
-      "sleep '#{capture_delay}' && " if capture_delay.to_i > 0
+      " -ss #{capture_delay}" if capture_delay.to_i > 0
+    end
+
+    def capture_duration
+      animated_duration.to_i + capture_delay.to_i
     end
   end
 end
